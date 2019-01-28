@@ -5,7 +5,7 @@ QgsApplication.setPrefixPath("/usr/", True)
 
 # create a reference to the QgsApplication, setting the
 # second argument to False disables the GUI
-qgs = QgsApplication([], False)
+qgs = QgsApplication([], True)
 
 # load providers
 qgs.initQgis()
