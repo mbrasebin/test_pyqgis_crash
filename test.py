@@ -1,4 +1,16 @@
 from qgis.core import *
+from sys import exit
+import time
+
+import os
+import signal
+
+def sig_handler(signum, frame):
+    print("segfault")
+signal.signal(signal.SIGSEGV, sig_handler)
+
+os.kill(os.getpid(), signal.SIGSEGV)
+
 
 # supply path to qgis install location
 QgsApplication.setPrefixPath("/usr", True)
@@ -12,3 +24,6 @@ qgs.initQgis()
 
 
 qgs.exitQgis()
+
+
+exit()
