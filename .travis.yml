@@ -1,0 +1,25 @@
+dist: xenial
+
+before_install:
+  - sudo add-apt-repository ppa:ubuntugis/ubuntugis-unstable -y
+  - sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key CAEB3DC3BDF7FB45
+  - echo "deb https://qgis.org/ubuntugis xenial main" | sudo tee -a /etc/apt/sources.list
+  - sudo apt update
+  - sudo apt install python-software-properties qgis python-qgis
+  - sudo apt install python3-tk
+  - sudo apt install xvfb
+  
+language: python
+
+python:
+  - "3.5"
+virtualenv:
+  system_site_packages: true
+
+before_script:
+  - export QGIS_PREFIX_PATH=/usr
+  - export PYTHONPATH=/home/travis/.local/lib/python3.5/site-packages:/usr/lib/python3/dist-packages:${QGIS_PREFIX_PATH}/share/qgis/python/:${QGIS_PREFIX_PATH}/share/qgis/python/plugins:`pwd`
+  - echo "PYTHONPATH:" $PYTHONPATH
+
+script:
+  - xvfb-run -a python app.py
