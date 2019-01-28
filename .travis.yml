@@ -22,4 +22,4 @@ before_script:
   - echo "PYTHONPATH:" $PYTHONPATH
 
 script:
-  - xvfb-run -a python app.py
+  - xvfb-run -a python test.py
