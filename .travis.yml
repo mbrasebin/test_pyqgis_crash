@@ -8,7 +8,6 @@ before_install:
   - sudo apt install python-software-properties qgis python-qgis
   - sudo apt install python3-tk
   - sudo apt install xvfb
-  - xvfb-run qtdiag  
 language: python
 
 python:
